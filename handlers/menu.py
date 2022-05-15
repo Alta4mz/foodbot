@@ -38,3 +38,18 @@ def addFood(id, food_type, food_name, food_composition):
         if sqlite_connection:
             sqlite_connection.close()
             print("Соединение с SQLite закрыто. ")
+def readTable():
+    try:
+        sqlite_connection = sqlite3.connect("sqlite_menu.db")
+        cursor = sqlite_connection.cursor()
+        sqlite_read_query = '''SELECT * FROM menu'''
+        cursor.execute(sqlite_read_query)
+        record = cursor.fetchall()
+        sqlite_connection.commit()
+        cursor.close()
+        return record
+    except sqlite3.Error as error:
+        print("Ошибка: ", error)
+    finally:
+        if sqlite_connection:
+            sqlite_connection.close
