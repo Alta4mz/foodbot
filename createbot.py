@@ -1,6 +1,10 @@
 from aiogram import Bot, Dispatcher
+from aiogram.contrib.fsm_storage.memory import MemoryStorage
 
-API_TOKEN = ' '
+API_Token = 'Не для посторонних глаз'
 
-bot = Bot(token=API_TOKEN)
-dp = Dispatcher(bot)
+
+storage = MemoryStorage()
+
+bot = Bot(token=API_Token)
+dp = Dispatcher(bot, storage=storage)
